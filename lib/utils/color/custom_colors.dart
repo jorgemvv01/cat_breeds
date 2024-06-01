@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 class CustomColors {
  static const mainColor = Color(0xFFB4E7B9);
- static const oppositeColor = Color(0xFFFFFFFF);
  static const secundaryColor = Color(0xFF151414);
  static const tertiaryColor = Color(0xFFF2ECD5);
  static const quaternaryColor = Color(0xFFD9D9D9);

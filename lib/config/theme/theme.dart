@@ -3,9 +3,6 @@
 import 'package:cat_breeds/utils/color/custom_colors.dart';
 import 'package:flutter/material.dart';
 
-
-const seedColor = Color.fromARGB(255, 7, 80, 59);
-
 class AppTheme {
 
   final bool isDarkmode;
@@ -20,7 +17,7 @@ class AppTheme {
     textSelectionTheme: const TextSelectionThemeData(
       cursorColor: CustomColors.mainColor,
       selectionColor: CustomColors.tertiaryColor,
-      selectionHandleColor: CustomColors.secundaryColor,
+      selectionHandleColor: CustomColors.mainColor,
     )
   );
 

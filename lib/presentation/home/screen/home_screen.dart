@@ -1,4 +1,4 @@
-import 'package:cat_breeds/presentation/general_provider/theme_provider.dart';
+import 'package:cat_breeds/config/theme/theme_provider.dart';
 import 'package:cat_breeds/presentation/home/provider/home_provider.dart';
 import 'package:cat_breeds/presentation/home/widget/cat_item.dart';
 import 'package:cat_breeds/utils/color/custom_colors.dart';
@@ -7,6 +7,7 @@ import 'package:cat_breeds/utils/widget/custom_page.dart';
 import 'package:cat_breeds/utils/widget/custom_search_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({
@@ -28,6 +29,7 @@ class HomeScreen extends ConsumerWidget {
             ),
             Center(
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     'CatBreeds',
@@ -36,8 +38,8 @@ class HomeScreen extends ConsumerWidget {
                   IconButton(
                     onPressed: () => ref.read(darkModeProvider.notifier).toggleDarkMode(), 
                     icon: darkMode
-                      ? Icon(Icons.sunny)
-                      : Icon(Icons.dark_mode_outlined)
+                      ? const Icon(Icons.sunny)
+                      : const Icon(Icons.dark_mode_outlined)
                   )
                 ],
               ),
@@ -48,7 +50,7 @@ class HomeScreen extends ConsumerWidget {
             CustomSearchText(
               width: double.infinity,
               height: 50,
-              hint: 'Buscar por raza...',
+              hint: AppLocalizations.of(context)?.searchByBreed ?? '',
               controller: ref.read(textControllerProvider),
               focusNode: ref.read(textFocusProvider),
               onSubmitted: (value){

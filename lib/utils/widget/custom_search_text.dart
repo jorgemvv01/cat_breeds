@@ -1,4 +1,3 @@
-import 'package:cat_breeds/utils/color/custom_colors.dart';
 import 'package:cat_breeds/utils/style/custom_text_styles.dart';
 import 'package:flutter/material.dart';
 
@@ -43,16 +42,13 @@ class _CustomSearchTextState extends State<CustomSearchText> {
         width: widget.width,
         height: widget.height,
         decoration: BoxDecoration(
-          color: CustomColors.oppositeColor,
           borderRadius: BorderRadius.circular(widget.height/3),
         ),
         child: TextField(
           focusNode: widget.focusNode,
           keyboardType: widget.keyboardType,
           controller: widget.controller,
-          style: CustomTextStyles.paragraph(
-            color: CustomColors.secundaryColor
-          ),
+          style: CustomTextStyles.paragraph(),
           maxLines: 1,
           onSubmitted: (value) => setState(() {
             widget.onSubmitted(value);
@@ -61,9 +57,7 @@ class _CustomSearchTextState extends State<CustomSearchText> {
           decoration: InputDecoration(
             contentPadding: EdgeInsets.fromLTRB(16, (widget.height/ 4), 10, 10),
             border: InputBorder.none,
-            hintStyle: CustomTextStyles.paragraph(
-              color: CustomColors.secundaryColor
-            ),
+            hintStyle: CustomTextStyles.paragraph(),
             hintText: widget.hint,
             suffixIcon: widget.controller.text.isNotEmpty
               ? IconButton(

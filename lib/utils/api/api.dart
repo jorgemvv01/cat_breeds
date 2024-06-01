@@ -12,9 +12,7 @@ class Api {
   //endpoint
   static const String allBreeds = '/$version/breeds';
   static const String searchBreeds = '/$version/breeds/search';
-
-  //image
-  static const String image = 'https://cdn2.thecatapi.com/images/';
+  static const String images = '$version/images/';
 
   static String getAPIBase(){
     switch (env) {
