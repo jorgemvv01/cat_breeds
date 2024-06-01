@@ -1,3 +1,12 @@
 {
-  "searchByBreed": "Buscar por raza..."
+  "searchByBreed": "Buscar por raza...",
+  "seeMore" : "Ver más",
+  "countryOfOrigin" : "País de origen",
+  "intelligence" : "Inteligencia",
+  "adaptabillity" : "Adaptabilidad",
+  "childFriendly" : "Apto para niños",
+  "energyLevel" : "Nivel de energía",
+  "noRecordsFound" : "No se encontraron registros",
+  "reload" : "Recargar",
+  "lifeSpan" : "Tiempo de vida"
 }

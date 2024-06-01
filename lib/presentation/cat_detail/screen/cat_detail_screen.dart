@@ -1,26 +1,20 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cat_breeds/domain/cat/model/cat.dart';
-import 'package:cat_breeds/presentation/home/provider/home_provider.dart';
-import 'package:cat_breeds/utils/api/api.dart';
-import 'package:cat_breeds/utils/color/custom_colors.dart';
-import 'package:cat_breeds/utils/images/custom_images.dart';
+import 'package:cat_breeds/presentation/cat_detail/widget/cat_detail_widget.dart';
 import 'package:cat_breeds/utils/style/custom_text_styles.dart';
-import 'package:cat_breeds/utils/widget/custom_page.dart';
+import 'package:cat_breeds/utils/widget/custom_page/custom_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class CatDetailScreen extends ConsumerWidget {
+class CatDetailScreen extends StatelessWidget {
+  final Cat cat;
+
   const CatDetailScreen({
     super.key,
     required this.cat
   });
 
-  final Cat cat;
-
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final size = MediaQuery.of(context).size;
-    final catImage = ref.watch(catImageProvider(cat.referenceImageId));
+  Widget build(BuildContext context) {
     return CustomPage(
       appBar: AppBar(
 
@@ -35,90 +29,8 @@ class CatDetailScreen extends ConsumerWidget {
       body: Center(
         child: Column(
           children: [
-            Stack(
-              children: [
-                cat.referenceImageId == null
-                ? Image.asset(
-                    CustomImages.placeholder, 
-                    fit: BoxFit.cover,
-                    cacheHeight: size.height~/2,
-                    cacheWidth: size.width.toInt(),
-                  )
-                : Center(
-                    child: 
-                      catImage.when(
-                        loading: () => const CircularProgressIndicator(
-                          color: CustomColors.mainColor,
-                        ),
-                        error: (error, stackTrace) => Image.asset(
-                          CustomImages.placeholder, 
-                          fit: BoxFit.cover,
-                          cacheHeight: size.height~/2,
-                          cacheWidth: size.width.toInt(),
-                        ),
-                        data: (data) => data != null && data.url.isNotEmpty
-                        ? CachedNetworkImage(
-                            imageUrl: data.url,
-                            fit: BoxFit.cover,
-                            height: size.height/2,
-                            width: double.infinity,
-                            placeholder: (context, url){
-                              return const SizedBox(
-                                height: 115,
-                                child: Padding(
-                                  padding: EdgeInsets.all(14.0),
-                                  child: Center(
-                                    child: CircularProgressIndicator(
-                                      color: CustomColors.mainColor,
-                                    ),
-                                  ),
-                                ),
-                              );
-                            },
-                            errorWidget: (_, __, ___) {
-                              return Image.asset(
-                                CustomImages.placeholder, 
-                                fit: BoxFit.cover,
-                                cacheHeight: size.height~/2,
-                                cacheWidth: size.width.toInt(),
-                              );
-                            },
-                          )
-                          : Image.asset(
-                              CustomImages.placeholder, 
-                              fit: BoxFit.cover,
-                              cacheHeight: size.height~/2,
-                              cacheWidth: size.width.toInt(),
-                            )
-                      )
-                ),
-                Positioned(
-                  bottom: 20,
-                  left: (size.width/2) - (size.width * 0.45),
-                  child: Container(
-                    width: size.width * 0.9,
-                    height: 40,
-                    decoration: BoxDecoration(
-                      color: CustomColors.quaternaryColor,
-                      borderRadius: BorderRadius.circular(25)
-                    ),
-                    child: Center(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                        child: Text(
-                          cat.temperament,
-                          style: CustomTextStyles.titleH4(
-                            isBold: true,
-                            color: CustomColors.secundaryColor
-                          ),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                    ),
-                  ),
-                )
-              ],
+            CatDatailWidget(
+              cat: cat,
             ),
             const SizedBox(
               height: 10,
@@ -139,7 +51,7 @@ class CatDetailScreen extends ConsumerWidget {
                       Row(
                         children: [
                           Text(
-                            'País de origen: ',
+                            '${AppLocalizations.of(context)?.countryOfOrigin ?? ''}: ',
                             style: CustomTextStyles.titleH4(isBold: true),
                           ),
                           Expanded(
@@ -153,7 +65,7 @@ class CatDetailScreen extends ConsumerWidget {
                       Row(
                         children: [
                           Text(
-                            'Intelligence: ',
+                            '${AppLocalizations.of(context)?.intelligence ?? ''}: ',
                             style: CustomTextStyles.titleH4(isBold: true),
                           ),
                           Expanded(
@@ -167,7 +79,7 @@ class CatDetailScreen extends ConsumerWidget {
                       Row(
                         children: [
                           Text(
-                            'Adaptability: ',
+                            '${AppLocalizations.of(context)?.adaptabillity ?? ''}: ',
                             style: CustomTextStyles.titleH4(isBold: true),
                           ),
                           Expanded(
@@ -181,7 +93,7 @@ class CatDetailScreen extends ConsumerWidget {
                       Row(
                         children: [
                           Text(
-                            'Child friendly: ',
+                            '${AppLocalizations.of(context)?.childFriendly ?? ''}: ',
                             style: CustomTextStyles.titleH4(isBold: true),
                           ),
                           Expanded(
@@ -195,7 +107,7 @@ class CatDetailScreen extends ConsumerWidget {
                       Row(
                         children: [
                           Text(
-                            'Nivel energía: ',
+                            '${AppLocalizations.of(context)?.energyLevel ?? ''}: ',
                             style: CustomTextStyles.titleH4(isBold: true),
                           ),
                           Expanded(
@@ -206,8 +118,22 @@ class CatDetailScreen extends ConsumerWidget {
                           ),
                         ],
                       ),
+                      Row(
+                        children: [
+                          Text(
+                            '${AppLocalizations.of(context)?.lifeSpan ?? ''}: ',
+                            style: CustomTextStyles.titleH4(isBold: true),
+                          ),
+                          Expanded(
+                            child: Text(
+                              cat.lifeSpan,
+                              style: CustomTextStyles.titleH5(),
+                            ),
+                          ),
+                        ],
+                      ),
                       const SizedBox(
-                        height: 20,
+                        height: 14,
                       ),
                     ],
                   ),

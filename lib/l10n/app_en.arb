@@ -1,3 +1,12 @@
 {
-  "searchByBreed": "Search by breed..."
+  "searchByBreed": "Search by breed...",
+  "seeMore" : "See more",
+  "countryOfOrigin" : "Country of origin",
+  "intelligence" : "Intelligence",
+  "adaptabillity" : "Adaptabillity",
+  "childFriendly" : "Child friendly",
+  "energyLevel" : "energyLevel",
+  "noRecordsFound" : "No records found",
+  "reload" : "Reload",
+  "lifeSpan" : "Life span"
 }

@@ -5,8 +5,10 @@ import 'package:cat_breeds/domain/cat/interface/i_cat.dart';
 import 'package:cat_breeds/domain/cat/model/cat.dart';
 import 'package:cat_breeds/domain/cat/model/cat_image.dart';
 import 'package:cat_breeds/utils/api/api.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
+
 
 class CatRepositoryHTTP extends ICat{
   late FlutterSecureStorage storage;
@@ -42,9 +44,32 @@ class CatRepositoryHTTP extends ICat{
         return allCatsByBreed;
       }
     }catch(e){
-      print(e.toString());
+      debugPrint('ERROR CAT REPOSITORY: $e');
     }
     return allCatsByBreed;
+  }
+
+  @override
+  Future<CatImage?> getCatImage(String referenceImage) async{
+    try{
+      final url = Uri.https(Api.getAPIBase(), '${Api.images}$referenceImage', {});
+      String apiKey = await storage.read(key: 'api-key') ?? '';
+      final response = await http.get(
+        url,
+        headers: {
+          'Content-Type' : 'application/json',
+          'x-api-key' : apiKey
+        }
+      ).timeout(const Duration(milliseconds: Api.timeout));
+      if (response.statusCode == 200) {
+        var body = jsonDecode(response.body);
+        final catImage = CatImage.fromJson(body);
+        return catImage;
+      }
+    }catch(e){
+      debugPrint('ERROR CAT REPOSITORY: $e');
+    }
+    return null;
   }
 
   @override
@@ -70,31 +95,8 @@ class CatRepositoryHTTP extends ICat{
         return allCatsByBreed;
       }
     }catch(e){
-      print(e.toString());
+      debugPrint('ERROR CAT REPOSITORY: $e');
     }
     return allCatsByBreed;
-  }
-
-  @override
-  Future<CatImage?> getCatImage(String referenceImage) async{
-    try{
-      final url = Uri.https(Api.getAPIBase(), '${Api.images}$referenceImage', {});
-      String apiKey = await storage.read(key: 'api-key') ?? '';
-      final response = await http.get(
-        url,
-        headers: {
-          'Content-Type' : 'application/json',
-          'x-api-key' : apiKey
-        }
-      ).timeout(const Duration(milliseconds: Api.timeout));
-      if (response.statusCode == 200) {
-        var body = jsonDecode(response.body);
-        final catImage = CatImage.fromJson(body);
-        return catImage;
-      }
-    }catch(e){
-      print(e.toString());
-    }
-    return null;
   }
 }

@@ -13,11 +13,11 @@ class CatService {
     return await iCat.getAllBreeds();
   }
 
-  Future<List<Cat>> searchBreeds(String searchText) async{
-    return await iCat.searchBreeds(searchText);
-  }
-
   Future<CatImage?> getCatImage(String referenceImage) async {
     return await iCat.getCatImage(referenceImage);
+  }
+
+  Future<List<Cat>> searchBreeds(String searchText) async{
+    return await iCat.searchBreeds(searchText);
   }
 }

@@ -1,4 +1,3 @@
-import 'package:cat_breeds/utils/color/custom_colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomPage extends StatelessWidget {

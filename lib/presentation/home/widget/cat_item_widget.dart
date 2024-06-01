@@ -1,16 +1,16 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cat_breeds/domain/cat/model/cat.dart';
 import 'package:cat_breeds/presentation/home/provider/home_provider.dart';
-import 'package:cat_breeds/utils/api/api.dart';
 import 'package:cat_breeds/utils/color/custom_colors.dart';
 import 'package:cat_breeds/utils/images/custom_images.dart';
 import 'package:cat_breeds/utils/style/custom_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class CarItem extends ConsumerWidget {
-  const CarItem({
+class CarItemWidget extends ConsumerWidget {
+  const CarItemWidget({
     super.key,
     required this.cat
   });
@@ -19,6 +19,7 @@ class CarItem extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final size = MediaQuery.of(context).size;
     final catImage = ref.watch(catImageProvider(cat.referenceImageId));
     return Card(
       elevation: 3,
@@ -51,7 +52,7 @@ class CarItem extends ConsumerWidget {
                     ),
                     child: Center(
                       child: Text(
-                        'Ver más...',
+                        AppLocalizations.of(context)?.seeMore ?? '',
                         style: CustomTextStyles.smallParagraph(
                           isBold: true,
                           color: CustomColors.secundaryColor
@@ -65,8 +66,8 @@ class CarItem extends ConsumerWidget {
           ),
           Center(
             child: Container(
-              height: 230,
-              width: 230,
+              height: size.height * 0.26,
+              width: size.height * 0.26,
               decoration: BoxDecoration(
                 color: CustomColors.tertiaryColor,
                 borderRadius: BorderRadius.circular(150),
@@ -81,8 +82,8 @@ class CarItem extends ConsumerWidget {
                   ? Image.asset(
                       CustomImages.placeholder, 
                       fit: BoxFit.cover,
-                      cacheHeight: 230,
-                      cacheWidth: 230,
+                      cacheHeight: (size.height * 0.26).toInt(),
+                      cacheWidth: (size.height * 0.26).toInt(),
                     )
                   : Center(
                       child: 
@@ -93,15 +94,15 @@ class CarItem extends ConsumerWidget {
                           error: (error, stackTrace) => Image.asset(
                             CustomImages.placeholder, 
                             fit: BoxFit.cover,
-                            cacheHeight: 230,
-                            cacheWidth: 230,
+                            cacheHeight: (size.height * 0.26).toInt(),
+                            cacheWidth: (size.height * 0.26).toInt(),
                           ),
                           data: (data) => data != null && data.url.isNotEmpty
                           ? CachedNetworkImage(
                               imageUrl: data.url,
                               fit: BoxFit.cover,
-                              height: 230,
-                              width: 230,
+                              height: size.height * 0.26,
+                              width: size.height * 0.26,
                               placeholder: (context, url){
                                 return const SizedBox(
                                   height: 115,
@@ -119,16 +120,16 @@ class CarItem extends ConsumerWidget {
                                 return Image.asset(
                                   CustomImages.placeholder, 
                                   fit: BoxFit.cover,
-                                  cacheHeight: 230,
-                                  cacheWidth: 230,
+                                  cacheHeight: (size.height * 0.26).toInt(),
+                                  cacheWidth: (size.height * 0.26).toInt(),
                                 );
                               },
                             )
                             : Image.asset(
                                 CustomImages.placeholder, 
                                 fit: BoxFit.cover,
-                                cacheHeight: 230,
-                                cacheWidth: 230,
+                                cacheHeight: (size.height * 0.26).toInt(),
+                                cacheWidth: (size.height * 0.26).toInt(),
                               )
                         )
                   ),
