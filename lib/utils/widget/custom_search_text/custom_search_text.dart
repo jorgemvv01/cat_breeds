@@ -64,16 +64,16 @@ class _CustomSearchTextState extends State<CustomSearchText> {
               ? IconButton(
                 icon: const Icon(Icons.cancel_outlined),
                 onPressed: () {
-                  widget.controller.text = "";
-                  widget.onSubmitted(widget.controller.text);
+                  setState(() {
+                    widget.controller.text = "";
+                    widget.onSubmitted(widget.controller.text);
+                  });
+                  
                 },
               )
-              : IconButton(
-                icon: const Icon(Icons.search_outlined),
-                onPressed: () {
-                  widget.focusNode.unfocus();
-                  widget.onSubmitted(widget.controller.text);
-                },
+              : const IconButton(
+                icon: Icon(Icons.search_outlined),
+                onPressed: null,
               )
           ),
         ),

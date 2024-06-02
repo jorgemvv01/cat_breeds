@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cat_breeds/main.dart';
 import 'package:cat_breeds/presentation/cat_detail/screen/cat_detail_screen.dart';
-import 'package:cat_breeds/presentation/cat_detail/widget/cat_detail_widget.dart';
 import 'package:cat_breeds/presentation/home/provider/home_provider.dart';
 import 'package:cat_breeds/presentation/home/screen/home_screen.dart';
 import 'package:cat_breeds/presentation/home/widget/cat_item_widget.dart';
@@ -11,7 +10,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  // ···
   group('end-to-end test', () {
     setUpAll(() async{
       await getStorage();

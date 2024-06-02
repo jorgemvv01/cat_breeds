@@ -70,8 +70,8 @@ class HomeScreen extends ConsumerWidget {
                     child: NoRecordFound(
                       showReload: true,
                       onPressed: () {
-                        ref.invalidate(catProvider);
-                        ref.invalidate(catImageProvider);
+                        ref.invalidate(textControllerProvider);
+                        ref.read(searchTextProvider.notifier).search('');
                       },
                     )
                   ),
