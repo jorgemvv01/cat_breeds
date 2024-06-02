@@ -100,3 +100,6 @@ lib/
 |- presentation/
 |- main.dart
 ```
+
+## Solution with GetX
+I also made the same application using GetX, you can see it [here](https://github.com/jorgemvv01/cat_breeds_with_getx).
