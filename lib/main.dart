@@ -10,23 +10,29 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+FlutterSecureStorage? storage;
 void main() async{
-
-  await dotenv.load(fileName: ".env");
-  AndroidOptions androidOptions = AndroidOptions.defaultOptions;
-  if (Platform.isAndroid) {
-    androidOptions = const AndroidOptions(
-      encryptedSharedPreferences: true,
-    );
-  }
-  final storage = FlutterSecureStorage(aOptions: androidOptions);
-  await storage.write(key: 'api-key', value: dotenv.env['API_KEY']);
-
+  await getStorage();
   runApp(
     const ProviderScope(
       child: MyApp()
     )
   );
+}
+
+Future<FlutterSecureStorage> getStorage() async{
+  if(storage == null){
+    await dotenv.load(fileName: ".env");
+    AndroidOptions androidOptions = AndroidOptions.defaultOptions;
+    if (Platform.isAndroid) {
+      androidOptions = const AndroidOptions(
+        encryptedSharedPreferences: true,
+      );
+    }
+    storage = FlutterSecureStorage(aOptions: androidOptions);
+    storage!.write(key: 'api-key', value: dotenv.env['API_KEY']);
+  }
+  return storage!;
 }
 
 class MyApp extends ConsumerWidget {

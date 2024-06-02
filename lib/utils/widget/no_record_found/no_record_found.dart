@@ -26,6 +26,7 @@ class NoRecordFound extends StatelessWidget {
         ),
         if(showReload)
         TextButton(
+          key: const ValueKey('reload-wg'),
           style: TextButton.styleFrom(
             backgroundColor: CustomColors.mainColor,
             foregroundColor: CustomColors.secundaryColor,
@@ -36,7 +37,7 @@ class NoRecordFound extends StatelessWidget {
           onPressed: onPressed,
           child: Text(
             AppLocalizations.of(context)?.reload ?? '',
-            style: CustomTextStyles.titleH5(
+            style: CustomTextStyles.titleH3(
               color: CustomColors.secundaryColor
             ),
           )

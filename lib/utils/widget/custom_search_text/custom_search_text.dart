@@ -45,6 +45,7 @@ class _CustomSearchTextState extends State<CustomSearchText> {
           borderRadius: BorderRadius.circular(widget.height/3),
         ),
         child: TextField(
+          key: const ValueKey('search-text-field-wg'),
           focusNode: widget.focusNode,
           keyboardType: widget.keyboardType,
           controller: widget.controller,

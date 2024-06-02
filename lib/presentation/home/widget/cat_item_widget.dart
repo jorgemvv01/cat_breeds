@@ -35,11 +35,12 @@ class CarItemWidget extends ConsumerWidget {
               children: [
                 Text(
                   cat.name,
-                  style: CustomTextStyles.titleH4(
+                  style: CustomTextStyles.titleH2(
                     isBold: true,
                   ),
                 ),
                 InkWell(
+                  key: const ValueKey('see-more-wg'),
                   onTap: (){
                     context.push('/cat-detail', extra: cat);
                   },
@@ -161,7 +162,7 @@ class CarItemWidget extends ConsumerWidget {
                       ),
                       Text(
                         cat.origin,
-                        style: CustomTextStyles.titleH5(
+                        style: CustomTextStyles.titleH3(
                           color: CustomColors.secundaryColor
                         ),
                       ),
@@ -176,7 +177,7 @@ class CarItemWidget extends ConsumerWidget {
                       ),
                       Text(
                         '${cat.intelligence}',
-                        style: CustomTextStyles.titleH5(
+                        style: CustomTextStyles.titleH3(
                           color: CustomColors.secundaryColor
                         ),
                       ),

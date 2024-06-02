@@ -137,9 +137,4 @@ class Weight {
     imperial: json["imperial"],
     metric: json["metric"],
   );
-
-  Map<String, dynamic> toJson() => {
-    "imperial": imperial,
-    "metric": metric,
-  };
 }

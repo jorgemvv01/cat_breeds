@@ -17,11 +17,10 @@ class CatDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomPage(
       appBar: AppBar(
-
         surfaceTintColor: Colors.transparent,
         title: Text(
           cat.name,
-          style: CustomTextStyles.titleH3(
+          style: CustomTextStyles.titleH1(
             isBold: true,
           ),
         ),
@@ -37,13 +36,13 @@ class CatDetailScreen extends StatelessWidget {
             ),
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
                       Text(
                         cat.description,
-                        style: CustomTextStyles.titleH4(),
+                        style: CustomTextStyles.titleH2(),
                       ),
                       const SizedBox(
                         height: 10,
@@ -52,12 +51,12 @@ class CatDetailScreen extends StatelessWidget {
                         children: [
                           Text(
                             '${AppLocalizations.of(context)?.countryOfOrigin ?? ''}: ',
-                            style: CustomTextStyles.titleH4(isBold: true),
+                            style: CustomTextStyles.titleH2(isBold: true),
                           ),
                           Expanded(
                             child: Text(
                               cat.origin,
-                              style: CustomTextStyles.titleH4(),
+                              style: CustomTextStyles.titleH2(),
                             ),
                           )
                         ],
@@ -66,12 +65,12 @@ class CatDetailScreen extends StatelessWidget {
                         children: [
                           Text(
                             '${AppLocalizations.of(context)?.intelligence ?? ''}: ',
-                            style: CustomTextStyles.titleH4(isBold: true),
+                            style: CustomTextStyles.titleH2(isBold: true),
                           ),
                           Expanded(
                             child: Text(
                               '${cat.intelligence}',
-                              style: CustomTextStyles.titleH5(),
+                              style: CustomTextStyles.titleH3(),
                             ),
                           ),
                         ],
@@ -80,12 +79,12 @@ class CatDetailScreen extends StatelessWidget {
                         children: [
                           Text(
                             '${AppLocalizations.of(context)?.adaptabillity ?? ''}: ',
-                            style: CustomTextStyles.titleH4(isBold: true),
+                            style: CustomTextStyles.titleH2(isBold: true),
                           ),
                           Expanded(
                             child: Text(
                               '${cat.adaptability}',
-                              style: CustomTextStyles.titleH5(),
+                              style: CustomTextStyles.titleH3(),
                             ),
                           ),
                         ],
@@ -94,12 +93,12 @@ class CatDetailScreen extends StatelessWidget {
                         children: [
                           Text(
                             '${AppLocalizations.of(context)?.childFriendly ?? ''}: ',
-                            style: CustomTextStyles.titleH4(isBold: true),
+                            style: CustomTextStyles.titleH2(isBold: true),
                           ),
                           Expanded(
                             child: Text(
                               '${cat.childFriendly}',
-                              style: CustomTextStyles.titleH5(),
+                              style: CustomTextStyles.titleH3(),
                             ),
                           ),
                         ],
@@ -108,12 +107,12 @@ class CatDetailScreen extends StatelessWidget {
                         children: [
                           Text(
                             '${AppLocalizations.of(context)?.energyLevel ?? ''}: ',
-                            style: CustomTextStyles.titleH4(isBold: true),
+                            style: CustomTextStyles.titleH2(isBold: true),
                           ),
                           Expanded(
                             child: Text(
                               '${cat.energyLevel}',
-                              style: CustomTextStyles.titleH5(),
+                              style: CustomTextStyles.titleH3(),
                             ),
                           ),
                         ],
@@ -122,12 +121,12 @@ class CatDetailScreen extends StatelessWidget {
                         children: [
                           Text(
                             '${AppLocalizations.of(context)?.lifeSpan ?? ''}: ',
-                            style: CustomTextStyles.titleH4(isBold: true),
+                            style: CustomTextStyles.titleH2(isBold: true),
                           ),
                           Expanded(
                             child: Text(
                               cat.lifeSpan,
-                              style: CustomTextStyles.titleH5(),
+                              style: CustomTextStyles.titleH3(),
                             ),
                           ),
                         ],

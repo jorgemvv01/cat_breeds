@@ -34,7 +34,7 @@ class HomeScreen extends ConsumerWidget {
                 children: [
                   Text(
                     'CatBreeds',
-                    style: CustomTextStyles.titleH3(isBold: true),
+                    style: CustomTextStyles.titleH1(isBold: true),
                   ),
                   IconButton(
                     onPressed: () => ref.read(darkModeProvider.notifier).toggleDarkMode(), 
@@ -70,6 +70,10 @@ class HomeScreen extends ConsumerWidget {
                     child: NoRecordFound(
                       showReload: true,
                       onPressed: () {
+                        if(ref.read(textControllerProvider).text == ''){
+                          ref.read(searchTextProvider.notifier).search('');
+                          return;
+                        }
                         ref.invalidate(catProvider);
                         ref.invalidate(catImageProvider);
                       },

@@ -1,27 +1,8 @@
 import 'package:flutter/material.dart';
 
 class CustomTextStyles {
+
   static TextStyle titleH1(
-      {Color? color, bool isBold = false}) {
-    return TextStyle(
-      color: color,
-      fontWeight: isBold ? FontWeight.bold : FontWeight.normal,
-      fontFamily: 'Poppins',
-      fontSize: 32,
-    );
-  }
-
-  static TextStyle titleH2(
-      {Color? color, bool isBold = false}) {
-    return TextStyle(
-      color: color,
-      fontWeight: isBold ? FontWeight.bold : FontWeight.normal,
-      fontFamily: 'Poppins',
-      fontSize: 26,
-    );
-  }
-
-  static TextStyle titleH3(
       {Color? color, bool isBold = false}) {
     return TextStyle(
       color: color,
@@ -31,7 +12,7 @@ class CustomTextStyles {
     );
   }
 
-  static TextStyle titleH4(
+  static TextStyle titleH2(
       {Color? color, bool isBold = false}) {
     return TextStyle(
       color: color,
@@ -41,23 +22,13 @@ class CustomTextStyles {
     );
   }
 
-  static TextStyle titleH5(
+  static TextStyle titleH3(
       {Color? color, bool isBold = false}) {
     return TextStyle(
       color: color,
       fontWeight: isBold ? FontWeight.bold : FontWeight.normal,
       fontFamily: 'Poppins',
       fontSize: 16,
-    );
-  }
-
-  static TextStyle titleH6(
-      {Color? color, bool isBold = false}) {
-    return TextStyle(
-      color: color,
-      fontWeight: isBold ? FontWeight.bold : FontWeight.normal,
-      fontFamily: 'Poppins',
-      fontSize: 14,
     );
   }
 
