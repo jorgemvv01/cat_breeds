@@ -67,6 +67,7 @@ Coverage of the tests can be found at:
 ```
 coverage/html/index.html
 ```
+![UI](https://github.com/jorgemvv01/cat_breeds/blob/main/resource/images/coverage.png)
 
 ### Folder Structures
 This is the basic folder structure used to develop the project:
