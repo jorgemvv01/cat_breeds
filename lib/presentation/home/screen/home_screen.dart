@@ -71,7 +71,9 @@ class HomeScreen extends ConsumerWidget {
                       showReload: true,
                       onPressed: () {
                         ref.invalidate(textControllerProvider);
-                        ref.read(searchTextProvider.notifier).search('');
+                        ref.invalidate(searchTextProvider);
+                        ref.invalidate(catProvider);
+                        ref.invalidate(catImageProvider);
                       },
                     )
                   ),
