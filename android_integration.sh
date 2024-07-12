@@ -1,9 +1,9 @@
-cd android
+pushd android
 # # flutter build generates files in android/ for building the app
 flutter build apk
 ./gradlew app:assembleAndroidTest
 ./gradlew app:assembleDebug -Ptarget=integration_test/cat_breeds.dart
-cd ..
+popd
 
 gcloud firebase test android run --type instrumentation \
   --app build/app/outputs/apk/debug/app-debug.apk \
