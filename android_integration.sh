@@ -10,8 +10,8 @@ gcloud firebase test android run --type instrumentation \
   --test build/app/outputs/apk/androidTest/debug/app-debug-androidTest.apk \
   --use-orchestrator \
   --timeout 3m \
-  --results-bucket=gs://integration_results_mjcoffee \
-  --results-dir=tests/firebase
+  # --results-bucket=gs://integration_results_mjcoffee \
+  # --results-dir=tests/firebase
 
 # cd android
 # # # flutter build generates files in android/ for building the app
