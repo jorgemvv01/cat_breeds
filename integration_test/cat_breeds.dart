@@ -8,8 +8,10 @@ import 'package:cat_breeds/utils/widget/no_record_found/no_record_found.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:integration_test/integration_test.dart';
 
 void main() {
+  IntegrationTestWidgetsFlutterBinding.ensureInitialized();
   group('end-to-end test', () {
     setUpAll(() async{
       await getStorage();
