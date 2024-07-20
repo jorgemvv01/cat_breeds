@@ -27,3 +27,5 @@ jobs:
         uses: google-github-actions/setup-gcloud@v2
       - name: Run Android integration tests
         run: ./android_integration.sh
+      - name: Run iOS integration tests
+        run: ./ios_integration.sh
