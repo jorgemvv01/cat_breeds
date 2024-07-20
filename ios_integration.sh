@@ -16,8 +16,8 @@ popd
 gcloud firebase test ios run --test "build/ios_integ/Build/Products/ios_tests.zip" \
   --device model=iphone11pro,version=$dev_target,locale=en_GB,orientation=portrait \
   --timeout 3m \
-  --results-bucket=gs://integration_results_mjcoffee \
-  --results-dir=tests/firebase
+  # --results-bucket=gs://integration_results_mjcoffee \
+  # --results-dir=tests/firebase
 
 # # > gcloud firebase test ios models list
 # ┌─────────────┬───────────────────────┬───────────────────────────────┬──────────────────────────┐
